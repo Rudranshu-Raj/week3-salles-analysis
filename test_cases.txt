@@ -1,0 +1,124 @@
+WEEK 3 - SALES DATA ANALYSIS TEST CASES
+
+Test Case 1: CSV File Loading
+--------------------------------
+Input:
+sales_data.csv
+
+Expected Result:
+CSV file should load successfully using pandas.
+
+Status:
+PASS
+
+
+Test Case 2: Dataset Exploration
+--------------------------------
+Input:
+df.shape, df.columns, df.dtypes
+
+Expected Result:
+Program should display dataset dimensions,
+column names and data types.
+
+Status:
+PASS
+
+
+Test Case 3: Missing Value Detection
+--------------------------------
+Input:
+df.isnull().sum()
+
+Expected Result:
+Program should detect the missing Price value.
+
+Status:
+PASS
+
+
+Test Case 4: Missing Value Handling
+--------------------------------
+Input:
+Missing Price value
+
+Expected Result:
+Missing Price should be replaced using the
+median Price.
+
+Status:
+PASS
+
+
+Test Case 5: Duplicate Detection
+--------------------------------
+Input:
+df.duplicated()
+
+Expected Result:
+Program should detect the duplicate record.
+
+Status:
+PASS
+
+
+Test Case 6: Duplicate Removal
+--------------------------------
+Input:
+df.drop_duplicates()
+
+Expected Result:
+Duplicate records should be removed.
+
+Status:
+PASS
+
+
+Test Case 7: Revenue Calculation
+--------------------------------
+Input:
+Quantity * Price
+
+Expected Result:
+Revenue should be calculated correctly for
+each sales record.
+
+Status:
+PASS
+
+
+Test Case 8: Total Revenue
+--------------------------------
+Input:
+Sum of Revenue column
+
+Expected Result:
+Program should calculate total sales revenue.
+
+Status:
+PASS
+
+
+Test Case 9: Best-Selling Product
+--------------------------------
+Input:
+Group data by Product and calculate total Quantity.
+
+Expected Result:
+Program should identify the product with the
+highest quantity sold.
+
+Status:
+PASS
+
+
+Test Case 10: Report Generation
+--------------------------------
+Input:
+Run sales_analysis.py
+
+Expected Result:
+sales_report.txt should be generated successfully.
+
+Status:
+PASS
