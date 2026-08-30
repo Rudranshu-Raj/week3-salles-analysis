@@ -1,124 +1,389 @@
-WEEK 3 - SALES DATA ANALYSIS TEST CASES
+WEEK 3 - SALES DATA ANALYSIS
+TEST CASES
 
-Test Case 1: CSV File Loading
---------------------------------
+==================================================
+TEST CASE 1: CSV FILE LOADING
+==================================================
+
+Test:
+Load the sales_data.csv file using Pandas.
+
 Input:
 sales_data.csv
 
 Expected Result:
-CSV file should load successfully using pandas.
+The CSV file should load successfully into a Pandas
+DataFrame without any errors.
+
+Expected Dataset:
+100 records and 7 columns.
 
 Status:
 PASS
 
 
-Test Case 2: Dataset Exploration
---------------------------------
+==================================================
+TEST CASE 2: DATASET SHAPE
+==================================================
+
+Test:
+Check the number of rows and columns using df.shape.
+
 Input:
-df.shape, df.columns, df.dtypes
+df.shape
 
 Expected Result:
-Program should display dataset dimensions,
-column names and data types.
+The dataset should contain:
+Rows    : 100
+Columns : 7
 
 Status:
 PASS
 
 
-Test Case 3: Missing Value Detection
---------------------------------
+==================================================
+TEST CASE 3: COLUMN NAMES
+==================================================
+
+Test:
+Check the column names using df.columns.
+
+Expected Result:
+The dataset should contain the following columns:
+
+Date
+Product
+Quantity
+Price
+Customer_ID
+Region
+Total_Sales
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 4: DATA TYPES
+==================================================
+
+Test:
+Check the data types of all columns.
+
+Input:
+df.dtypes
+
+Expected Result:
+The dataset should contain appropriate data types
+for date, product, quantity, price, customer ID,
+region and total sales fields.
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 5: MISSING VALUE DETECTION
+==================================================
+
+Test:
+Check the dataset for missing values.
+
 Input:
 df.isnull().sum()
 
 Expected Result:
-Program should detect the missing Price value.
+No missing values should be present in the
+developer-provided sales dataset.
 
 Status:
 PASS
 
 
-Test Case 4: Missing Value Handling
---------------------------------
+==================================================
+TEST CASE 6: DUPLICATE DETECTION
+==================================================
+
+Test:
+Check the dataset for duplicate records.
+
 Input:
-Missing Price value
+df.duplicated().sum()
 
 Expected Result:
-Missing Price should be replaced using the
-median Price.
+No duplicate records should be present in the
+developer-provided sales dataset.
 
 Status:
 PASS
 
 
-Test Case 5: Duplicate Detection
---------------------------------
+==================================================
+TEST CASE 7: DATE CONVERSION
+==================================================
+
+Test:
+Convert the Date column into datetime format.
+
 Input:
-df.duplicated()
+df["Date"] = pd.to_datetime(df["Date"])
 
 Expected Result:
-Program should detect the duplicate record.
+The Date column should be converted successfully
+to datetime format.
 
 Status:
 PASS
 
 
-Test Case 6: Duplicate Removal
---------------------------------
+==================================================
+TEST CASE 8: TOTAL SALES VERIFICATION
+==================================================
+
+Test:
+Calculate total sales using the Total_Sales column.
+
 Input:
-df.drop_duplicates()
+df["Total_Sales"].sum()
 
 Expected Result:
-Duplicate records should be removed.
+The program should calculate the total sales
+correctly from the dataset.
 
 Status:
 PASS
 
 
-Test Case 7: Revenue Calculation
---------------------------------
-Input:
-Quantity * Price
+==================================================
+TEST CASE 9: SALES CALCULATION
+==================================================
+
+Test:
+Verify sales calculation using Quantity and Price.
+
+Formula:
+Total Sales = Quantity × Price
 
 Expected Result:
-Revenue should be calculated correctly for
-each sales record.
+The calculated sales value should correspond to
+the Total_Sales value for the respective records.
 
 Status:
 PASS
 
 
-Test Case 8: Total Revenue
---------------------------------
+==================================================
+TEST CASE 10: TOTAL UNITS SOLD
+==================================================
+
+Test:
+Calculate the total quantity of products sold.
+
 Input:
-Sum of Revenue column
+df["Quantity"].sum()
 
 Expected Result:
-Program should calculate total sales revenue.
+The program should calculate the total number
+of units sold successfully.
 
 Status:
 PASS
 
 
-Test Case 9: Best-Selling Product
---------------------------------
+==================================================
+TEST CASE 11: BEST-SELLING PRODUCT
+==================================================
+
+Test:
+Group the data by Product and calculate the total
+Quantity sold for each product.
+
 Input:
-Group data by Product and calculate total Quantity.
+df.groupby("Product")["Quantity"].sum()
 
 Expected Result:
-Program should identify the product with the
-highest quantity sold.
+The program should identify the product with the
+highest total quantity sold.
 
 Status:
 PASS
 
 
-Test Case 10: Report Generation
---------------------------------
-Input:
-Run sales_analysis.py
+==================================================
+TEST CASE 12: PRODUCT-WISE SALES ANALYSIS
+==================================================
+
+Test:
+Calculate total quantity and total sales for
+each product.
 
 Expected Result:
-sales_report.txt should be generated successfully.
+The program should generate a product-wise summary
+containing product, quantity sold and sales/revenue.
+
+Products in the dataset include:
+Laptop
+Phone
+Tablet
+Monitor
+Headphones
 
 Status:
+PASS
+
+
+==================================================
+TEST CASE 13: REGION-WISE SALES ANALYSIS
+==================================================
+
+Test:
+Group sales data by Region.
+
+Expected Result:
+The program should generate a region-wise summary
+showing sales performance for each region.
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 14: HIGHEST REVENUE PRODUCT
+==================================================
+
+Test:
+Group the dataset by Product and calculate total
+sales/revenue for each product.
+
+Expected Result:
+The program should identify the product generating
+the highest total sales.
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 15: AVERAGE SALES
+==================================================
+
+Test:
+Calculate the average sales per transaction.
+
+Input:
+df["Total_Sales"].mean()
+
+Expected Result:
+The program should calculate the average sales
+value successfully.
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 16: SALES RECORD COUNT
+==================================================
+
+Test:
+Count the number of sales records after cleaning.
+
+Input:
+len(df)
+
+Expected Result:
+The cleaned dataset should contain 100 records
+because the developer-provided dataset contains
+no duplicate records.
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 17: REPORT GENERATION
+==================================================
+
+Test:
+Run the complete sales analysis program.
+
+Input:
+python sales_analysis.py
+
+Expected Result:
+The program should complete successfully and
+generate the file:
+
+sales_report.txt
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 18: REPORT CONTENT
+==================================================
+
+Test:
+Open the generated sales_report.txt file.
+
+Expected Result:
+The report should contain:
+
+- Dataset summary
+- Total sales
+- Total units sold
+- Best-selling product
+- Highest revenue product
+- Average sales
+- Product-wise summary
+- Region-wise summary
+- Key insights
+
+Status:
+PASS
+
+
+==================================================
+TEST CASE 19: FINAL OUTPUT
+==================================================
+
+Test:
+Run the complete program after loading and
+cleaning the developer-provided dataset.
+
+Expected Result:
+The terminal should display the sales analysis
+results and confirm successful report generation.
+
+Expected Message:
+
+Report successfully created: sales_report.txt
+
+Status:
+PASS
+
+
+==================================================
+TEST SUMMARY
+==================================================
+
+Total Test Cases: 19
+
+CSV Loading              : PASS
+Dataset Exploration      : PASS
+Missing Value Detection  : PASS
+Duplicate Detection      : PASS
+Date Conversion          : PASS
+Sales Calculation        : PASS
+Total Sales              : PASS
+Total Units Sold         : PASS
+Best-Selling Product     : PASS
+Product-Wise Analysis    : PASS
+Region-Wise Analysis     : PASS
+Revenue Analysis         : PASS
+Average Sales            : PASS
+Report Generation        : PASS
+
+Overall Status:
 PASS
